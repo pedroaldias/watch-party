@@ -1,0 +1,13 @@
+{
+  "name": "watchparty",
+  "version": "1.0.0",
+  "description": "Real-time collaborative watch party app",
+  "scripts": {
+    "server": "cd server && npm install && npm start",
+    "dev": "cd server && npm install && npm run dev",
+    "install:server": "cd server && npm install"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

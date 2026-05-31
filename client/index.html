@@ -103,7 +103,7 @@
   .subtitle-text:empty { display: none; }
 
   /* ── Controls bar (always visible desktop, auto on mobile) ── */
-  .controls-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.4rem 0.9rem 0.8rem; background: linear-gradient(transparent, rgba(0,0,0,0.92)); z-index: 10; opacity: 0; transition: opacity 0.25s; }
+  .controls-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.4rem 0.9rem 0.8rem; background: linear-gradient(transparent, rgba(0,0,0,0.92)); z-index: 8; opacity: 0; transition: opacity 0.25s; }
   .video-area:hover .controls-overlay, .controls-overlay:focus-within, .controls-overlay.always-on { opacity: 1; }
 
   .progress-bar-wrap { width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; cursor: pointer; margin-bottom: 0.5rem; transition: height 0.15s; }
@@ -199,11 +199,14 @@
     display: none; /* shown only on mobile */
     position: fixed; inset: 0; z-index: 100;
     flex-direction: column;
-    pointer-events: none; /* transparent by default */
+    pointer-events: none; /* panel itself never blocks clicks */
   }
   .mobile-chat-backdrop {
-    flex: 1; /* taps here close panel */
-    pointer-events: auto;
+    flex: 1;
+    pointer-events: none; /* backdrop also blocked by default */
+  }
+  .mobile-chat-panel.open .mobile-chat-backdrop {
+    pointer-events: auto; /* only intercept taps when open */
   }
   .mobile-chat-sheet {
     background: rgba(12,12,16,0.97);
